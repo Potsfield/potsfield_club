@@ -1,0 +1,102 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="ISO-8859-1">
+<title>Potsfield Posts</title>
+
+	
+<style type=text/css>   
+    
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+  
+
+    body   
+{   
+padding: 0px;  
+background-size: cover;
+background-image:url("images/hh.png");
+background-attachment:fixed;
+background-position:center;
+background-color:black; 
+
+}  
+
+ 
+div{
+bottom:350px;
+margin: 1%;
+padding: 30%;
+}
+
+.add{
+width: 50%;
+padding: 1%;
+position:relative;
+text-decoration: blink;
+font-family: Algerian;
+margin-left: 150%;
+bottom: 350px;
+}
+.po span{
+
+color: White;
+padding: 10px 5px;
+display: block
+
+}
+.po{
+position:relative;
+text-align:center;
+color:white;
+padding: 5px;
+margin:2px;
+}
+
+.sp{
+background-color:transparent;
+position: absolute;
+text-align:center;
+bottom: 150px;
+left:230px;
+font-family: Papyrus;
+font-size: 15px;
+text-transform: capitalize;
+}
+
+.edit{
+padding-right: 20px;
+padding-left: 400px;
+}
+
+</style>
+
+</head>
+<body>
+
+<script>
+//URL you want to redirect to
+let my_url = "/login";
+//Function to redirect
+setTimeout (function (){window.location.replace (my_url);}, 1000);
+</script>
+<div align="center">
+	
+	
+ 		<div class="po"  th:each="post : ${listPost}">
+ 			<img  class="img" alt="pos" src="images/a.png" width="120%">
+ 		<span style="font-family: Papyrus; font-weight:bold;" class="sp" th:text="${post.postDesc}"></span>
+ 		
+		</div>
+ 
+	
+</div>
+</body>
+</html>

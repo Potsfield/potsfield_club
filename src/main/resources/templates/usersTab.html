@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+
+    
+
+
+<style>
+.infinity-form .btn-social {
+    color: white;
+    border: 0;
+    display: inline-block;
+    margin: 0px;
+    margin-right: 10px;
+    font-weight: bold;
+    padding: 0px 5px;
+    margin-bottom: 10px;
+}
+
+.infinity-form .btn-edit {
+    color: #FF8F00;
+}
+
+.infinity-form .btn-delete {
+    color: #FF8F00;
+}
+
+
+.infinity-form .btn-edit:hover {
+    color: #0080FF;
+}
+
+.infinity-form .btn-delete:hover {
+    color:#FF0000;
+}
+
+
+
+* {
+  font-family: Papyrus;
+  font-weight: bold; /* Change your font family */
+  
+}
+
+.content-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  background-color: #FF8F00; 
+  color: #000000;
+  text-align: left;
+  font-weight: bold; 
+}
+.content-table tfoot tr {
+  background-color: #FF8F00; 
+  color: #000000;
+  text-align: left;
+  font-weight: bold; 
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+  background-color: #363636; 
+  color: #FF8F00;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+  background-color: rgb(0,0,0); 
+  color: #FF8F00;
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+  
+}
+
+.content-table tbody tr.active-row {
+  font-weight: bold; 
+  color: #009879;
+  
+}</style>
+</head>
+<body style="background-color:#000000; color: #FF8F00; font-weight: bold;">
+<table  id="example" class="content-table " style="width:100%; ">
+        <thead>
+            <tr>
+            	<th>User ID</th>
+					<th>E-mail</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th sec:authorize="hasAuthority('ROLE_ADMIN')">Edit</th>
+					<th sec:authorize="hasAuthority('ROLE_ADMIN')">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+   <tr th:each="user: ${listUsers}">
+				<td th:text="${user.id}">User ID</td>
+					<td th:text="${user.email}">E-mail</td>
+					<td th:text="${user.firstName}">First Name</td>
+					<td th:text="${user.lastName}">Last Name</td>
+					<td sec:authorize="hasAuthority('ROLE_ADMIN')">
+						<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
+						<a th:href="@{/editTab/{id}(id=${user.id})}" class="btn btn-social btn-edit"><span >
+						<i class="fa fa-pencil-square-o"></i></span>
+                        <span>Edit</span></a>
+						</div>
+						</td>
+					<td>
+					
+						<div sec:authorize="hasAuthority('ROLE_ADMIN')" class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
+						<a th:href="@{/NewFileDelete/{id}(id=${user.id})}" class="btn btn-social btn-delete"><span >
+						<i class="fa fa-trash-o"></i></span>
+                        <span>Delete</span></a>
+						</div>
+					</td>
+				</tr>
+        </tbody>
+
+    </table>
+    <a style="font-family: Papyrus; color:#FF8F00; text-align: right; float: right; bottom: 30px;
+  right: 10px; position:absolute;" th:href="@{/index}">Back to Home</a>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+   
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+</body>
+</html>

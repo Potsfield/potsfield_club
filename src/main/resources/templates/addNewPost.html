@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+<title>Add post</title>
+<style type="text/css">
+
+body   
+{   
+padding:0px;
+background-size: cover;
+background-image:url("images/ha.png");
+background-attachment:fixed;
+background-position:center;
+background-color:black;  
+}
+p{
+color: #FF5733; 
+	text-align: center;
+font-family: monospace;
+font-size: 25px;
+font-style: italic;
+ 	font-weight: bold;
+}
+.new{
+
+position: absolute;
+bottom: 240px;
+background-color:transparent;
+left:430px;
+color:white;
+border-radius: 10px;
+font-family: Papyrus; 
+font-weight:bold;
+font-size: 15px;
+text-align: center;
+ font-weight: bold;
+}
+
+.btn{
+position: relative;
+top:20px;
+line-height: 30px;
+border-radius: 20px;
+padding:  1px 90px;
+font-size: 14px;
+color: black;
+ 	font-weight: bold;
+background-color: #FF5733;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+    
+    border-radius: 20px;
+    background: #FF5733;    /*Button Color*/
+    color: #000;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: #FF8F00;    /*Button color when hover*/
+}
+</style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+<form action="#" th:action="@{/savePost}" th:object="${post}" method="POST">
+	<div align="center" >
+	<p style="font-family: Papyrus; font-weight:bold;">ADD NEW POST! </p>
+	<br>
+			
+    	
+    	-->	
+	<img alt="new" src="images/a.png" width="60%">
+	<textarea class="new" cols="50" rows="6" th:field ="*{postDesc}"  placeholder="Write something here !" ></textarea>
+	<br><br>
+	<button style="font-family: Papyrus; font-weight:bold;" type="submit" class="btn">ADD</button>
+</div>
+</form>
+
+    <a style="font-family: Papyrus; color:#FF8F00; text-align: right; float: right; bottom: 30px;
+  right: 10px; position:absolute;" th:href="@{/index}">Back to Home</a>
+</body>
+</html>

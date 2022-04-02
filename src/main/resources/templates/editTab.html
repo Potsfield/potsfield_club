@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Registration Form</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+  <link rel="stylesheet" href="styles.css">
+  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  
+  <style>
+  
+  @import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  font-family:Papyrus;
+  font-weight: bold;
+}
+
+body{
+  background: rgb(0,0,0);
+}
+
+.wrapper{
+  max-width: 350px;
+  width: 100%;
+  height: auto;
+  background: rgb(255,255,255);
+  padding: 60px 45px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.wrapper .title{
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #FF8F00;
+}
+
+.wrapper .form .input_field{
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.wrapper .form .input_field .input{
+  width: 100%;
+  padding: 12px;
+  padding-left: 30px;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #777;
+  color: #000000;
+}
+.wrapper .form .input_field input:focus,
+.wrapper .form .input_field input:valid {
+    border-bottom: 1px solid #FF8F00;   
+}
+.btnUp{
+  width: 50%;
+  margin-left:65px;
+  background: #FF8F00;
+  text-align: center;
+  padding: 12px;
+  position: relative;
+  border-radius: 25px;
+  border: none;
+}
+
+.btnUp {
+  color: #000000;
+}
+
+.wrapper .form .input_field i{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 14px;
+  color: #1d2120;
+}
+
+
+  a:link {
+  color: #FFB900;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #FF8F00;
+  background-color: transparent;
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="title">
+    Update User
+  </div>
+
+  
+  <div class="form">
+  <form action="usersTab" th:action="@{/saveUser}" th:object="${user}"
+			method="POST">
+		<div class="input_field">
+    <span><i class="fa fa-pencil "></i></span>
+      <input type="hidden" th:field="*{id}" class="input">
+    </div>	
+			
+    <div class="input_field">
+    <span><i class="fa fa-user"></i></span>
+      <input type="text" th:field="*{firstName}" class="input">
+    </div>
+    <div class="input_field">
+      <input  type="text" th:field="*{lastName}" class="input">
+      <i class="fas fa-user"></i>
+    </div>
+    <div class="input_field">
+      <input type="text" th:field="*{email}"class="input" >
+      <i class="fa fa-envelope"></i>
+    </div>
+    <div class="input_field">
+      <input id="password" type="password" placeholder="Password" class="input" >
+      <i class="fas fa-lock"></i>
+    </div>
+    <div class="btn">
+    <button type="submit" class="btnUp" > Update</button>
+    </div >
+    
+    </form>
+    <div style="text-decoration:none; text-align:center; color:#000000"><a style="text-decoration:none; ;" th:href = "@{/usersTab}">Back to Users Table</a></div>
+     
+  </div>
+</div>	
+	
+</body>
+</html>

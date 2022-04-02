@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<title>Login</title>
+
+	<meta charset="ISO-8859-1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+<style type="text/css">
+.infinity-image-container{
+	background: url('https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Halloween-PNG-Pictures/Halloween_Dark_House_PNG_Clip_Art_Image-642805028.png?m=1538920018');
+	background-size: contain;
+background-repeat: no-repeat;
+	background-color: #000000;
+}
+
+.infinity-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.infinity-form{
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    
+}
+
+.infinity-form h4 {
+    font-weight: bold;
+}
+
+.infinity-form .form-input {
+    position: relative;
+}
+
+.infinity-form .form-input input {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 40px;
+    border: none;
+    border-bottom: 2px solid #777;
+    outline: none;
+    background: transparent;
+    padding-left: 40px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.infinity-form .form-input span {
+    position: absolute;
+    top: 8px;
+    padding-left: 10px;
+    color: #000000;
+}
+
+.infinity-form .form-input input:focus,
+.infinity-form .form-input input:valid {
+    border-bottom: 2px solid #F5A400;   
+}
+
+.infinity-form button[type="submit"] {
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background: linear-gradient(45deg, #EC8600, #FF8B00);   /*Button Color*/
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.infinity-form button[type="submit"]:hover {
+    background: linear-gradient(45deg, #FF8B00, #F5A400);   /*Button color when hover*/
+}
+
+.forget-link , .login-link , .register-link {
+    color: #000000;
+    font-weight: bold;
+}
+
+.forget-link:hover , .login-link:hover , .register-link:hover {
+    color: #F5A400;
+    text-decoration: none;
+}
+body{
+overflow: hidden;
+}
+.alert {
+  padding: 10px;
+  background-color: #F19C9C;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<!-- IMAGE CONTAINER BEGIN -->
+			<div class="col-lg-6 col-md-6 d-none d-md-block infinity-image-container">
+			</div>
+			
+
+			<!-- FORM CONTAINER BEGIN -->
+			<div class="col-lg-6 col-md-6 infinity-form-container" >
+				<div class="col-lg-9 col-md-12 col-sm-8 col-xs-12 infinity-form">
+					<!-- Company Logo -->
+					<div class="text-center mb-3 mt-5">
+						<img src="https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Halloween-PNG-Pictures/Large_Transparent_Halloween_Pumpkin_with_Black_Cat_Clipart.png?m=1434276777" width="150px">
+					</div>
+					<div class="text-center mb-4">
+		        <h4 style="font-family:Papyrus;" >Log into account</h4>
+		      </div>
+					<!-- Form -->
+					<form th:action="@{/login}" method="post" class="px-3">
+					<!-- error message -->
+					<div th:if="${param.error}">
+			<!--	<div class="alert show">
+ <span class="fas fa-exclamation-circle"></span>
+<span class="msg">invalid password or username</span>
+<span class="fas fa-times"></span>
+</div>  -->		
+
+<div class="alert">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+  <strong>Error! </strong>Invalid username or password
+</div>
+					</div>
+				
+						<!-- Input Box -->
+						<div class="form-input">
+							<span><i class="fa fa-envelope"></i></span>
+							<input style="font-family:Papyrus;" type="email" id ="username" name = "username" placeholder="Email Address">
+						</div>
+						<div class="form-input">
+							<span><i class="fa fa-lock"></i></span>
+							<input style="font-family:Papyrus;" type="password" id="password" name="password" placeholder="Password" >
+						</div>
+						<div class="row mb-3">
+	
+				    </div>
+				    <div class="mb-3"> 
+							<button type="submit" class="btn btn-block" style="color:#000000; font-family:Papyrus;">Login</button>
+						</div>
+					
+					</form>
+						<div class="text-center mb-5" style="color: #777 ; font-family:Papyrus;" >Don't have an account? 
+							<a class="register-link" href="/" th:href="@{/registration}" style="font-family:Papyrus;">Register here</a>
+							
+	        	</div>
+				</div>
+				<!-- FORM END -->					
+			</div>
+			<!-- FORM CONTAINER END -->
+		</div>
+	</div>
+</body>
+</html>

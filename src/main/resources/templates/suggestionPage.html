@@ -1,0 +1,94 @@
+<!DOCTYPE html >
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Potsfield Suggestions</title>
+<style type="text/css">
+
+ body   
+{   
+padding: 0px;  
+background-size: cover;
+background-image:url("images/hg.png");
+background-attachment:fixed;
+background-position:center;
+background-color:black;
+font-family: sans-serif;  
+}  
+
+table , th, td{
+border: 1px solid #FF5733;
+border-collapse: collapse; 
+font-family: monospace;
+font-size: 15px;
+font-style: italic;
+text-transform: capitalize;
+width: 1200px;
+	background-color: rgba(0,0,0,0.5);
+	text-align: center;
+}
+
+div{
+bottom:3px;
+margin: 1%;
+padding: 1%;
+}
+th{
+color: gray;
+}
+td{
+color:white;
+}
+p{
+width: 1200px;
+	background-color: rgba(0,0,0,0.5);
+color: #FF5733;
+	text-align: center;
+font-family: monospace;
+font-size: 15px;
+font-style: italic;
+text-transform: capitalize;
+	font-size: 20px;
+ 	font-weight: bold;
+}
+a{
+float: center;
+}
+.img{
+position: relative;
+left: 34px;
+}
+</style>
+
+</head>
+<body>
+<div align="center">
+
+<p>SUGGESTION LIST </p>	
+
+	<table>
+		<thead>
+			<tr >
+				<th> ID </th>
+				<th> SUGGESTIONS </th>
+				<th>  </th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="suggestion : ${listSuggestion}" >
+			<td th:text="${suggestion.id}"></td>
+			<td th:text="${suggestion.suggestionDesc}"></td>
+			<td><a style="font-family: Papyrus; color:#FF8F00; text-align: center;" th:href="@{/deleteSuggestion/{id}(id=${suggestion.id})}"> 
+			 Delete</a> <img alt="dele" src="images/delete.png" width="20px">
+ 		</td>
+			</tr>
+		</tbody>
+	</table>
+	
+</div>
+
+
+ <a style="font-family: Papyrus; color:#FF8F00; text-align: right; float: right; bottom: 30px;
+  right: 10px; position:absolute;" th:href="@{/index}">Back to Home</a>
+</body>
+</html>

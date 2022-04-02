@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+ body   
+{   
+padding: 0px;  
+background-size: cover;
+background-image:url("images/hal.png");
+background-attachment:fixed;
+background-position:center;
+background-color:black;
+font-family: sans-serif;  
+}
+p{
+width: 1200px;
+	background-color: rgba(0,0,0,0.5);
+color: #FF5733;
+	text-align: center;
+font-family: monospace;
+font-size: 15px;
+font-style: italic;
+text-transform: capitalize;
+	font-size: 20px;
+ 	font-weight: bold;
+}
+div{
+bottom:3px;
+margin: 1%;
+padding: 3%;
+}
+
+.new{
+position:absolute;
+bottom: 290px;
+background-color:transparent;
+left:420px;
+color:white;
+border-radius: 10px;
+font-family: monospace;
+font-size: 15px;
+font-style: italic;
+text-align: center;
+
+ 	font-weight: bold;
+}
+.btn{
+position: relative;
+line-height: 30px;
+border-radius: 20px;
+top:-40px;
+padding:  1px 90px;
+font-size: 14px;
+color: black;
+ 	font-weight: bold;
+background-color: #FF5733;
+}
+
+
+
+
+
+
+.btn {
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+    background: #FF5733;    /*Button Color*/
+    color: #000;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.btn:hover {
+    background: #FF8F00;    /*Button color when hover*/
+}
+</style>
+</head>
+<body>
+<div align="center">
+<form action="#" th:action="@{/saveSuggestion}" th:object="${suggestion}" method="POST">
+
+<p>We are so excited to read your suggestion! All input is 100% anonymous so please provide as much info as possible. 
+    		The more info you provide, the better we will understand your idea.
+    		 Thank you ^^</p>
+	<img alt="ss" src="images/a.png" width="70%">
+	<textarea class="new" cols="50" rows="6" th:field ="*{suggestionDesc}"  placeholder="Write something here !" ></textarea>
+	<br><br>
+	<button type="submit" class="btn">ADD</button>
+
+</form>
+</div>
+
+
+ <a style="font-family: Papyrus; color:#FF8F00; text-align: right; float: right; bottom: 30px;
+  right: 10px; position:absolute;" th:href="@{/index}">Back to Home</a>
+</body>
+</html>
